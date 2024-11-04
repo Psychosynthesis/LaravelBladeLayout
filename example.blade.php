@@ -1,0 +1,135 @@
+@php
+$price_items = [
+  [
+    'caption' => 'Вариант 1',
+    'items' => [[ 'service' => 'Месячный бухучет (консультации + в пределах 100 транзакций)', 'price' => '2,000 AED в месяц' ], [ 'service' => 'Каждые последующий 100 транзакций', 'price' => '+1,000 AED в месяц' ]]
+  ],
+  [
+    'caption' => 'Вариант 2',
+    'items' => [[ 'service' => 'Квартальный учет для малого бизнеса если компания уже <br> зарегистрирована к НДС (до 10 документов в месяц, до 2х сотрудников)', 'price' => '5,000 AED за квартал <br> (декларация по НДС в цене)' ]]
+  ],
+  [
+    'caption' => 'Вариант 3',
+    'items' => [[ 'service' => 'Квартальный учет для малого бизнеса без регистрации к НДС <br> (до 10 документов в месяц, до 2х сотрудников)', 'price' => '3,000 AED за квартал' ]]
+  ],
+  [
+    'caption' => 'Другие услуги',
+    'items' => [
+      [ 'service' => 'Внесение в учет транзакций за предыдущие периоды', 'price' => 'цена договорная' ],
+      [ 'service' => 'Регистрация к НДС (VAT)', 'price' => '2,000 AED разово' ],
+      [ 'service' => 'Подача НДС (VAT) отчета', 'price' => '2,000 AED ежеквартально' ],
+      [ 'service' => 'Подача запроса на возврат НДС (форма VAT 311)', 'price' => 'цена договорная' ],
+      [ 'service' => 'Регистрация к Корпоративному налогу', 'price' => '600 AED разово (для компаний уже зарегистрированных к НДС), <br> 1,000 AED разово (для первичной регистрации в FTA' ],
+      [ 'service' => 'Внесение обязательных изменений в информации о компании', 'price' => '500 AED' ],
+      [ 'service' => 'Регистрация доступа к goAML порталу в Финансовой Полиции', 'price' => '1,000 AED' ],
+      [ 'service' => 'Консультация базовая', 'price' => '1,000 AED в час' ],
+      [ 'service' => 'Организация проведения аудита (подготовка и передача всей документации для проведения аудита, взаимодействие с аудитором по всем вопросам в отчетности компании)', 'price' => '2,000 AED разово' ],
+      [ 'service' => 'Лицензия на бухгалтерский софт Quickbooks Online', 'price' => '100 AED разово' ],
+    ]
+  ],
+]
+@endphp
+
+<style>
+  @font-face { font-family: "Century Gothic"; font-display: swap; src: url("public/res/centurygothic.ttf") format("truetype"); }
+  @font-face { font-family: "Century Gothic"; font-display: swap; src: url("public/res/centurygothic_bold.ttf") format("truetype"); font-weight: bold; }
+  html, body { margin: 0; padding: 0; font-family: "Century Gothic" }
+  .container { padding-top: 14px; }
+  .center-column { margin: 0 auto; min-height: 100vh; }
+  .header, .header .menu, .lang-badge { display: flex; justify-content: space-between; align-items: center; }
+  .header .logo { width: 200px; }
+  .header .menu div { margin-left: 29px; font-size: 18px; cursor: pointer; }
+  .header .menu div:hover { color: #0152FF; }
+  .lang-badge { color: #0152FF; font-weight: bold; width: 51px; height: 51px; background: #e6eeff; justify-content: center; border-radius: 10px; }
+  .check-mark { display: inline-flex; width: 28px; height: 28px; margin-right: 10px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIhSURBVHgBtZfvYZswEMXfqR3A2YBOUGeCphOUeAG7G7gTgCdIOkHsBVwyQd0J6g1KJwgLhMsTCgSIsAmQ98VCku9nHbo/FvRRqDN8wFKAKyjmnAlqq0cIUn1EwvEfJJKeMydnYIExiBRYoadocJvn2JyCd0LNQteERRzOMEA0vMn3EnestURXisGdHWG8Es3xnafO6pMf27tE8Jsfc0yjkPYCeuyyPmkaD9d6y7NPBXSiPRPqTXOq1EJXfLjDO4lu/ko3H+zY1OgRplPWnqCbqwM5KE+JZuwNhvFEl7qXC77H2yaV9kNdVlD+iiXGK3t24RHO8n17Azkrx3ch8oBxagKtTRsFnkvJfReGQTP2tvYGFhJ8Mcyln72Lynzq3kuK/sDgJNDKILDQmZ+JNfbyw14MPia9gOYM0Bmemc7F8stMYbyN163b6Af2jABD45mfiZihtK4m3KnjsUDLsyf9372OG1abuJpIZFO4eyjQKsexV8h4y9QQIMqQsWVHcTi5kSmykbSHAi2HvKK0qWBXtCKnvmCwloXaMnX/nKcDvFWKrf2oqgwN/htkqD8w1V/yyQ6rkCkq/DuKro3L8Uucsta9qgxTAXPaTWRXPr/qkZgG/k7aPSiOdGt3u1LsUQa+P+0N4LExc/Ya6u57Q40YFjGGKSuyVyI/fYtnm236IpI3NNs83RZDm20P/Iqjb7Rqy9e8Bknh/loc8Ihdu8f16QnUnOnFMVG7ugAAAABJRU5ErkJggg==")}
+  .info-icon { display: inline-flex; cursor: pointer; width: 11px; height: 11px; margin-left: 10px; margin-bottom: 10px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAALCAYAAABLcGxfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEPSURBVHgBhVDtUcMwDH0SHSAjlA3aCRImqJtjgG4AbBAmoGxQBoAkE5BuEDYoE5AFGvHs1r7mR6+6kyzJT08fgkt5tEIMTzAsQizo7YgGjXxEiCZnbVsZURvQ2Yi1GTbUVhSVOnubFGhpFYErApf4lHdVFGRf4kt2zD2YwqG051NTZxlZ/vhxz9aHQFOSceTbyEuInS2I+fYYxR0Ktu4S2MuIlrZNcSM97YH0+YwLZnSGyfKK/Ox1KSehIFMP5mXmuC0ZOw+KI1mEBZzzKtTZnJMU1L1yvoEXehVBHT5O8ku2nwg+L1x5rCQWXoajOR6gwowFfq8ROXMVwbt4MZm0Lm1Du6LG8XqOsUUt+wj5B1MBb8RX3rmYAAAAAElFTkSuQmCC")}
+
+  .phone { display: inline-flex; width: 17px; height: 17px; margin-right: 7px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADkSURBVHgBlZJRDsFAEIb/3URCgjjCHoFHCRI3cAOcACfADdxAb6A30JDGqxvYI2zQeGjSMai2Stqah939Z/fbmdkdgE3tzpZyvZM63BQKmFT7ywpSDkGkEATbIqCEEJNIhWA+BJgPD5EpAh0T2sD3+/kQ0RJ/mtTdmsOzE+oGSqV5LvQcfX+MuLYpv+giCxLvhXKvIxDW8Y6w+CuWKJcNPG/DWrHu63ZFi+QN/MFzrnGRcJko7ddF+gGKdGjujgFvrKODX7kJLdM+3avbXGOLU9U/ISJbIMM46ihssWYYxdKd6uwOJtlPFcUHTyYAAAAASUVORK5CYII="); background-repeat:no-repeat; background-position: center center; }
+  .mail { display: inline-flex; width: 17px; height: 17px; margin-right: 7px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADVSURBVHgBzZLNEYIwEIXfbizAEtKBWoHQgSVoJY4d2IFYgiU4ercELQFHbxDWJTMoMIwjyIHvksxm897LDzAUyJ4egQ47dIEQI8s2IzDPIWLRFWMmrCJ7VVtBcGuz1/ezCXRyYDh3BZFFmoS6FP0osdX+GVwaqtiF7PkpvkykyhwiSQIQr/W8ttHdmCXE3f09ikzzMn8a9F6+p6q4FwLe/52kTDmVMXNNFtXdyzCaKFLlAs4dtbCou1c8G5O0hNEDvYnE+Ad99pH/raz/QjBGJ2SFwfACRYxi4Q1k1v8AAAAASUVORK5CYII="); background-repeat: no-repeat; background-position: center center; }
+  .baloon { display: inline-flex; width: 17px; height: 17px; margin-right: 7px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAARCAYAAAAG/yacAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEpSURBVHgBlVLdTcMwED6f4aESoLCBO0GfQSqCDegElA3YgGSDMAErdIMGAeIRRvAGDaISUl3lenaS1q7TVv0k+3zn++7PFuBBvf/dAuIDEN2zmvAqQYgJ2zJ91dOtn/AIKTs8wy4QZXp4nq5J6nM+BoJXOISqGumbiwk2CeMMBDqyIbrA6PogUoGzMX09POtbuUVOrD+ClIMgmsRc3106RydZD+/lAGG5/IUjgTwxHViqKlVf/8oem9KfQor4qaf3MZ9B/S4+ysjG/dle6+kJkUOMJLIIKOryLBaLlybyfhiTrUk8pXJHNi+LSNupbr7RdJbAyek3W1REaHppVWwPLhvQY2cWKce+ir7CH7JgkUdlXffe4BD4Caa8yMque+xkGTPivWDZWe4KzY5twtdNtwwAAAAASUVORK5CYII="); background-repeat: no-repeat; background-position: center center; }
+  .tg { display: inline-flex; width: 17px; height: 17px; margin-right: 7px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAANCAYAAAB2HjRBAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEsSURBVHgBnZJhToNAFITnATZNNIo3WG9Af2sMPUG5gfUG9QTFE3gEvYHxBBA18WfrDdYT2GgbkkKKsyuYotRo5w+8ffsx83YR/FPqKVMoiiFEDuRPwKT0kWVnWK0ilmG1PPV+hR7eQ7juAIvFkKWPEhq1nYj2Wl3m8xGbA5YB3YCynMFxYoIB31UFp9JwERmvxaqVErrg7muCwdeq44aiHukCjG2sdZmIrsuDwQvdbxsgpU/2xGFjZoZvgCIxirxXgcl30KYx5vp0/4Zf6SPPj7hpxGdPH+9eotv1K1Dhp6xZ61Wp5NVHpzPZAJpkEQ3unNamcd0EGi2XzzZ2a7MoVOUQM/q5PbxafNf9Q1u3/ySO8BAltrN/jpHC20k4pGJvim3Ea71S929RXX8Aazd1HYrmXSwAAAAASUVORK5CYII="); background-repeat: no-repeat; background-position: center center; }
+  .pdf { display: inline-flex; width: 17px; height: 17px; margin-right: 7px; margin-top: -20px; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAARCAYAAAACCvahAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFwSURBVHgBjVNRUsIwEH1JAz/UGbxBOIHwrczADeAEegM5At6gngCOICegjjr+CZzAeIPOKIhCu26K1WmntH0zmXZf8nZfsonQz58aUTQHkUYZhDAADc25u7ShxH6vKwkt7DrCWRKqzPSSsy8zXJNFg7xcWbHPW5hlqjUhZQUx0RVXbqc4IZo4ApVZOIXj3Ka4KGTbWJSLbeV9+GuR7f5X9XnujuMAAqtkuUyJpfRM123ZAZcHEPDw0GgM2ZF1piGdv9MW+uG9x+QceSAYuI0ONptFqp1EN6Z7MlYogiM9bNYDTpIIPe7Gih1OWi80KRZHkbXdjh1IDPG9M6jXrQvQdquLxbGQZrytESe4hFLicMsowNf2TRZKCQPemx/bBUac5DoWKjUy/VMjIUWAMtje73YtPukevwXbhXtLK/tC9NN6zP86p/QhcRi+olbjXkeGv22OLd8XqAD9+EEZyjcXbl9WEcenLcSYb1eHo2lC/wAcCpFMSDmtaQAAAABJRU5ErkJggg=="); background-repeat: no-repeat; background-position: center center; }
+
+
+  h1 { margin-top: 17px; margin-bottom: 10px; line-height: 50px; font-size: 40px; }
+  .sub-header { font-size: 20px; line-height: 25px; margin-bottom: 4px; }
+  .pricelist-block { margin-top: 30px; border-radius: 13px; background: #eef0f3; }
+  .pricelist-header { display: flex; background: #d2dae5; border-radius: 13px; padding: 17px 14px; font-size: 20px; font-weight: bold; line-height: 25px; }
+  .pricelist-item-container { padding: 0px 15px; }
+  .pricelist-item { font-size: 20px; display: flex; justify-items: center; justify-content: space-between; padding: 20px 0px 23px; }
+  .pricelist-item-container:not(:last-child) .pricelist-item { border-bottom: 1px solid #D6D8DB; }
+  .priceblock { width: 100%; max-width: 250px; margin-left: 30px; font-weight: bold; }
+
+  .footer-container { background: #343434; color: #fff; width: 100%; margin: 100px 0 12px; }
+  .footer { margin: 0 auto; padding-top: 16px; }
+  .footer-top { display: flex; margin-bottom: 25px; justify-content: space-between; align-items: center; flex-direction: row; align-items: stretch; }
+  .footer-bottom { color: #B1B1B1; font-size: 14px; display: flex; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 13px 0; }
+  .footer-contacts div, .footer-menu div { margin-bottom: 13px; line-height: 17px; cursor: pointer; align-content: center; display: flex; }
+  .footer-contacts, .footer-menu { display: flex; flex-direction: column; justify-content: end; }
+  .footer-pdf { cursor: pointer; display: flex; flex-direction: row; align-items: center; }
+  .footer-menu div { font-weight: bold; }
+
+  @media screen and (min-width:1200px) {
+  	.center-column, .footer { max-width: 1171px; }
+    .priceblock { max-width: 346px; }
+  }
+</style>
+<div class="container">
+  <div class="center-column">
+    <div class='header'>
+      <a class="logo" href="/"><img src="public/res/logo.svg" alt="Logo" /></a>
+      <div class="menu">
+        <div>Генератор WPS файлов</div>
+        <div>Прайслист</div>
+        <div class="lang-badge">RU</div>
+      </div>
+    </div>
+    <h1>Базовый прайслист</h1>
+    <div class="sub-header">Цены не включают 5% НДС <div class="info-icon" title="Объяснение про НДС"></div></div>
+
+    @if (isset($price_items))
+      @foreach($price_items as $block)
+      <div class="pricelist-block">
+        <div class="pricelist-header"><div class="check-mark"></div>{{ $block['caption'] }}</div>
+        @foreach($block['items'] as $item)
+        <div class="pricelist-item-container">
+          <div class="pricelist-item">
+            <div>{!! $item['service'] !!}</div>
+            <div class="priceblock">{!! $item['price'] !!}</div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+      @endforeach
+    @endif
+  </div>
+
+  <div class="footer-container">
+    <div class="footer">
+      <div class="footer-top">
+        <div><a class="logo" href="/"><img src="public/res/foter-logo.svg" alt="Logo" /></a></div>
+        <div class="footer-contacts">
+          <div><span class="phone"></span>+971566797475</div>
+          <div><span class="mail"></span>elena@bga.ae</div>
+        </div>
+        <div class="footer-contacts">
+          <div><span class="tg"></span>@mayustup</div>
+          <div><span class="baloon"></span>JLT, Dubai, UAE</div>
+        </div>
+        <div class="footer-pdf">
+          <div><span class="pdf"></span></div>
+          <div>39140 IFZA <br /> (показать pdf)</div>
+        </div>
+        <div class="footer-menu">
+          <div>Генератор WPS файлов</div>
+          <div>Прайслист</div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Copyright © 2024</div>
+        <div>Политика конфиденциальности</div>
+      </div>
+    </div>
+  </div>
+</div>

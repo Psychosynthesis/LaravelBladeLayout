@@ -1,2 +1,7 @@
-# LaravelBladeLayout
-Laravel template layout example
+# Laravel template layout example
+ Пример вёрстки blade-шаблона для Laravel
+
+ Файл шаблона `example.blade.php` \
+ Все ресурсы в папке `res`
+
+ Для корректного отображения необходимо включить в тег `<head>` сайта файл `res\style.css`, либо вставить все стили в сам шаблон внутри тега `<style></style>` (но лучше первый вариант). Файлы шрифтов должны лежать в той же папке, что и `.css`, иначе нужно поправить пути.
